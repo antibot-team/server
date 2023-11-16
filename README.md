@@ -30,7 +30,7 @@ server.start();
 
 # Routes
 ```js
-const { Router } = require("../../../dist");
+const { Router } = require("@antibot/server");
 const router = Router();
 
 router.get("/hello", (req, res) => {
