@@ -112,4 +112,8 @@ export class Server {
       this.app.listen(this.options.port);
     }
   }
+
+  get getConfig(): ServerOptions {
+    return this.options;
+  }
 }
