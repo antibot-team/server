@@ -21,5 +21,15 @@
     "helmet": "^7.1.0",
     "path": "^0.12.7",
     "typescript": "^5.2.2"
-  }
+  },
+  "repository": {
+    "url": "https://github.com/antibot-team/server"
+  },
+  "keywords": [
+    "antibot",
+    "anti-bot",
+    "express",
+    "quick-express",
+    "server"
+  ]
 }

@@ -1,0 +1,10 @@
+{
+    "out": "./docs",
+    "name": "@antibot/server",
+    "readme": "./README.md",
+    "theme": "default",
+    "entryPoints": ["src/index.ts"],
+    "excludeExternals": false,
+    "excludePrivate": false,
+    "excludeInternal": false
+  }

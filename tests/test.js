@@ -11,6 +11,9 @@ const server = new Server({
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   },
+  ratelimit: {
+    message: "You have hit the ratelimit. Please try again later.",
+  },
 });
 
 server.start();
