@@ -33,6 +33,7 @@ export interface ServerOptions {
     urlencoded?: ExpressUrlencodedOptions;
     viewEngine?: string;
     views?: string;
+    viewExt?: string;
     debug?: boolean;
   };
   cors?: {
@@ -107,11 +108,24 @@ export class Server {
     }
 
     if (this.options.settings.views) {
-      const views: string[] = glob.sync(this.options.settings.views);
+      const views: string[] = glob.sync(
+        path.join(
+          this.options.settings.views,
+          `**/**/*.${this.options.settings.viewExt}`
+        )
+      );
       if (this.options.settings.debug) {
         console.log("Found views:", views);
       }
-      this.app.set("views", this.options.settings.views);
+
+      views.forEach((routePath: string) => {
+        const viewModule = require(path.resolve(routePath));
+
+        if (this.options.settings.debug) {
+          console.log("Loaded view:", routePath);
+        }
+        this.app.set("views", viewModule);
+      });
     }
   }
 

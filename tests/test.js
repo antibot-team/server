@@ -4,6 +4,8 @@ const server = new Server({
   port: 2000,
   settings: {
     routesDirectory: path.join(process.cwd(), "/tests/routes/"),
+    views: path.join(process.cwd(), "/dist/"),
+    viewExt: "js",
     routesEndpoint: "/api",
     debug: true,
   },
