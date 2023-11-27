@@ -79,6 +79,10 @@ export class Server {
     if (this.options.ratelimit) {
       this.app.use(rateLimit(this.options.ratelimit));
     }
+
+    if (this.options.settings.viewEngine) {
+      this.app.set("view engine", this.options.settings.viewEngine);
+    }
   }
 
   #mount(): void {
@@ -100,6 +104,14 @@ export class Server {
 
         this.app.use(this.options.settings.routesEndpoint, routeModule.default);
       });
+    }
+
+    if (this.options.settings.views) {
+      const views: string[] = glob.sync(this.options.settings.views);
+      if (this.options.settings.debug) {
+        console.log("Found views:", views);
+      }
+      this.app.set("views", this.options.settings.views);
     }
   }
 
