@@ -118,14 +118,7 @@ export class Server {
         console.log("Found views:", views);
       }
 
-      views.forEach((routePath: string) => {
-        const viewModule = require(path.resolve(routePath));
-
-        if (this.options.settings.debug) {
-          console.log("Loaded view:", routePath);
-        }
-        this.app.set("views", viewModule);
-      });
+      this.app.set("views", this.options.settings.views);
     }
   }
 
